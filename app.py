@@ -130,7 +130,7 @@ def get_jobs(agent,
   Location = "Noida,Delhi"
   Profile = "data analysts ,AI Engineer"
   prompt = f"""based on use given job profile,
-  fetch latest jobs or job apply article
+  fetch latest jobs or job apply article 
   using Naukri,Linkedin,Indeed,or all popular
   Job apply platforms,show results with JOB PROFILE NAME,LOCATION,SALARY,
   COMPANY NAME,SHOW jobs only related to given {Location} and {Profile}.
