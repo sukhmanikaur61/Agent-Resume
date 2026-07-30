@@ -13,22 +13,35 @@ from PIL import Image
 import pandas as pd
 import numpy as np
 
-#keys
-#STEP3
+#to show web app: complete page layout
+st.set_page_config(layout="wide")
+
+#to give title
+st.title("AI RESUME GENERATOR")
+
+st.write("""this app helps user to build customised Professional
+Resume with Latest Job apply links""")
+
+st.image("bg.png")
+
+
+
+# ==============API keys================
+
 TAVILY_API_KEY = "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"
 GOOGLE_API_KEY = " AQ.Ab8RN6J4bQ3XriAiGANyx52sDu_e2pZYDqIPBDfdl6sLMOSI7w"
 GROQ_API_KEY = "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"
 print("done")
 
-#
+#==============model============
 model =  ChatGoogleGenerativeAI(
     model = 'gemini-3.5-flash-lite',
     google_api_key = GOOGLE_API_KEY
 )
-response = model.invoke("hello buddy!")
-response.content[-1]['text']
+# response = model.invoke("hello buddy!")
+# response.content[-1]['text']
 
-#
+#==============Tools============
 
 def search_latest_news_jobs(query):
   """this function helps to fetch latest
@@ -44,7 +57,7 @@ def search_latest_news_jobs(query):
 agent = create_agent(
     model = model,
     tools = [search_latest_news_jobs])
-agent
+# agent
 
 #
 def main_agent(agent,query):
@@ -88,13 +101,13 @@ def main_agent(agent,query):
   code = response['messages'][-1].content[-1]['text']
   return code
 
-  #
-  code = main_agent(agent,"Sukhmani kaur,GenAI Expert")
-from IPython import display as DISPLAY
-DISPLAY.HTML(code)
+  
+# code = main_agent(agent,"Sukhmani kaur,GenAI Expert")
+# from IPython import display as DISPLAY
+# DISPLAY.HTML(code)
 
 #
-#fetch latest domain related jobs using tavily
+
 
 #fetch latest domain related jobs using tavily
 def get_jobs(agent,
@@ -116,6 +129,6 @@ def get_jobs(agent,
 
   return code
 
-  code = get_jobs(agent)
-  DISPLAY.HTML(code)
+  # code = get_jobs(agent)
+  # DISPLAY.HTML(code)
 
