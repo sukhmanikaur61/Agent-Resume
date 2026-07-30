@@ -44,6 +44,23 @@ elif all(all_API):
     st.success("API KEYS LOADED SUCCESSFULLY")
 else:
     st.info("PASS ALL API-KEYS")
+#MULTISELECT OPTION
+options = ["Delhi","Mumbai",
+           "Pune","Banglore",
+           "Gurugram/Gurgaon"]
+location = st.sidebar.multiselect("Select Location", 
+                                  options = options)
+profile_op = ["Data Analysts","AI Engineer",
+              "GEN AI Developer,"Full-Stack Dev",
+              "Data Scientist"]
+profile = st.sidebar.multiselect("Select Job Profile",
+                                  options = profile_op)
+                                  
+#==========GET USER INFO===========
+st.markdown("""### GET USER INFO""")
+USER_INFO = ST.TEXT_area(
+
+
 
 
 
@@ -146,4 +163,16 @@ def get_jobs(agent,
 
   # code = get_jobs(agent)
   # DISPLAY.HTML(code)
+
+  if st.button("Generate Resume"):
+            with st.spinner("Agent Running"):
+
+                       code = main_agent(agent,user_info)
+                       st.html(code , width="strech" ,
+                               unsafe_allow_javascript=True)
+                       st.divider() #to give horizontal div
+                       job_code = get_jobs(agent,location,profile)
+                       st.html(job_code , width="strech" ,
+                               unsafe_allow_javascript=True)
+  
 
