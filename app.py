@@ -43,7 +43,7 @@ if not all(all_API):
 elif all(all_API):
     st.success("API KEYS LOADED SUCCESSFULLY")
 else:
-st.info("PASS ALL API-KEYS")
+    st.info("PASS ALL API-KEYS")
 
 
 
